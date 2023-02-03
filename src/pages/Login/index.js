@@ -34,7 +34,7 @@ export default class Login extends Component {
     const isButtonDisable = name.length >= minCharacter;
 
     return (
-      <form>
+      <form data-testid="page-login">
         <label htmlFor="input-name">
           Nome
           <input
