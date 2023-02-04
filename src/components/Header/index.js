@@ -1,18 +1,42 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { getUser } from '../../services/userAPI';
+import Loading from '../Loading';
 
 export default class Header extends Component {
+  state = {
+    userName: '',
+    isLoading: false,
+  };
+
+  componentDidMount() {
+    this.handleGetUser();
+  }
+
+  handleGetUser = async () => {
+    this.setState({ isLoading: true });
+
+    const user = await getUser();
+    this.setState({
+      userName: user.name,
+      isLoading: false,
+    });
+  };
+
   render() {
-    const { name } = this.props;
+    const { userName, isLoading } = this.state;
+
     return (
       <header data-testid="header-component">
-        <h2 data-testid="header-user-name">{ name }</h2>
-        { name }
+        {
+          isLoading ? (
+            <Loading />
+          ) : (
+            <h2 data-testid="header-user-name">
+              { userName }
+            </h2>
+          )
+        }
       </header>
     );
   }
 }
-
-Header.propTypes = {
-  name: PropTypes.string.isRequired,
-};
