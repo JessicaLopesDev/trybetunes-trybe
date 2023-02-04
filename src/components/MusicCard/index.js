@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import { Link } from 'react-router-dom';
 
 export default class MusicCard extends Component {
   render() {
     const {
       musicName,
+      url,
     } = this.props;
 
     return (
       <div>
-        <h3>{musicName}</h3>
-        <p>artista</p>
+        <span>{musicName}</span>
+        <audio data-testid="audio-component" src={ url } controls>
+          <track kind="captions" />
+          O seu navegador não suporta o elemento
+          {' '}
+          <code>audio</code>
+          .
+        </audio>
       </div>
     );
   }
@@ -19,4 +25,5 @@ export default class MusicCard extends Component {
 
 MusicCard.propTypes = {
   musicName: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 };
