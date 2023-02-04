@@ -37,24 +37,26 @@ export default class Header extends Component {
             </h2>
           )
         }
-        <Link
-          to="/search"
-          data-testid="link-to-search"
-        >
-          Pesquisar
-        </Link>
-        <Link
-          to="/favorites"
-          data-testid="link-to-favorites"
-        >
-          Favoritas
-        </Link>
-        <Link
-          to="/profile"
-          data-testid="link-to-profile"
-        >
-          Perfil
-        </Link>
+        <nav>
+          <Link
+            to="/search"
+            data-testid="link-to-search"
+          >
+            Pesquisar
+          </Link>
+          <Link
+            to="/favorites"
+            data-testid="link-to-favorites"
+          >
+            Favoritas
+          </Link>
+          <Link
+            to="/profile"
+            data-testid="link-to-profile"
+          >
+            Perfil
+          </Link>
+        </nav>
       </header>
     );
   }
