@@ -6,18 +6,35 @@ export default class MusicCard extends Component {
     const {
       musicName,
       url,
+      musicId,
+      // isChecked,
     } = this.props;
 
     return (
       <div>
         <span>{musicName}</span>
-        <audio data-testid="audio-component" src={ url } controls>
+
+        <audio
+          data-testid="audio-component"
+          src={ url }
+          controls
+        >
           <track kind="captions" />
           O seu navegador não suporta o elemento
           {' '}
           <code>audio</code>
           .
         </audio>
+
+        <label htmlFor="favorite-check">
+          Favorita
+          <input
+            data-testid={ `checkbox-music-${musicId}` }
+            id="favorite-check"
+            type="checkbox"
+            // checked={ isChecked }
+          />
+        </label>
       </div>
     );
   }
@@ -26,4 +43,6 @@ export default class MusicCard extends Component {
 MusicCard.propTypes = {
   musicName: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
+  musicId: PropTypes.string.isRequired,
+  // isChecked: PropTypes.bool.isRequired,
 };
