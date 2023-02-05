@@ -5,7 +5,7 @@ import Header from '../../components/Header';
 import MusicCard from '../../components/MusicCard';
 
 import getMusics from '../../services/musicsAPI';
-import { addSong } from '../../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../../services/favoriteSongsAPI';
 import Loading from '../../components/Loading';
 
 export default class Album extends Component {
@@ -17,7 +17,19 @@ export default class Album extends Component {
 
   componentDidMount() {
     this.handleGetMusics();
+    this.handleGetFavoriteSongs();
   }
+
+  handleGetFavoriteSongs = () => {
+    this.setState({ isLoadind: true });
+
+    getFavoriteSongs().then((songs) => {
+      this.setState({
+        isLoadind: false,
+        trackIds: songs.map((song) => song.trackId),
+      });
+    });
+  };
 
   handleGetMusics = async () => {
     const { match } = this.props;
@@ -26,12 +38,19 @@ export default class Album extends Component {
     this.setState({ musics: gettingMusics });
   };
 
-  handleFavoriteSong = (music) => {
-    this.setState((prevState) => ({
-      ...prevState,
-      isLoadind: true,
-      trackIds: [...prevState.trackIds, music.trackId],
-    }));
+  handleFavoriteSong = (music, checked) => {
+    if (checked) {
+      this.setState((prevState) => ({
+        ...prevState,
+        isLoadind: true,
+        trackIds: [...prevState.trackIds, music.trackId],
+      }));
+    } else {
+      const { trackIds } = this.state;
+      const filteredIds = trackIds.filter((id) => id !== music.trackId);
+
+      this.setState({ trackIds: filteredIds });
+    }
 
     addSong(music).then(() => {
       this.setState({ isLoadind: false });
@@ -61,8 +80,12 @@ export default class Album extends Component {
                           musicName={ music.trackName }
                           url={ music.previewUrl }
                           musicId={ music.trackId }
-                          isChecked={ trackIds.includes(music.trackId) }
-                          isFavorite={ () => this.handleFavoriteSong(music) }
+                          isChecked={
+                            trackIds.includes(music.trackId)
+                          }
+                          isFavorite={
+                            ({ target }) => this.handleFavoriteSong(music, target.checked)
+                          }
                         />
                       );
                     }
