@@ -7,7 +7,8 @@ export default class MusicCard extends Component {
       musicName,
       url,
       musicId,
-      // isChecked,
+      isChecked,
+      isFavorite,
     } = this.props;
 
     return (
@@ -32,7 +33,8 @@ export default class MusicCard extends Component {
             data-testid={ `checkbox-music-${musicId}` }
             id="favorite-check"
             type="checkbox"
-            // checked={ isChecked }
+            checked={ isChecked }
+            onChange={ isFavorite }
           />
         </label>
       </div>
@@ -43,6 +45,7 @@ export default class MusicCard extends Component {
 MusicCard.propTypes = {
   musicName: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  musicId: PropTypes.string.isRequired,
-  // isChecked: PropTypes.bool.isRequired,
+  musicId: PropTypes.number.isRequired,
+  isChecked: PropTypes.bool.isRequired,
+  isFavorite: PropTypes.func.isRequired,
 };
