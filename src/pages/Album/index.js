@@ -5,7 +5,7 @@ import Header from '../../components/Header';
 import MusicCard from '../../components/MusicCard';
 
 import getMusics from '../../services/musicsAPI';
-import { addSong, getFavoriteSongs } from '../../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../../services/favoriteSongsAPI';
 import Loading from '../../components/Loading';
 
 export default class Album extends Component {
@@ -45,16 +45,23 @@ export default class Album extends Component {
         isLoadind: true,
         trackIds: [...prevState.trackIds, music.trackId],
       }));
+
+      addSong(music).then(() => {
+        this.setState({ isLoadind: false });
+      });
     } else {
       const { trackIds } = this.state;
       const filteredIds = trackIds.filter((id) => id !== music.trackId);
 
-      this.setState({ trackIds: filteredIds });
-    }
+      this.setState({
+        trackIds: filteredIds,
+        isLoadind: true,
+      });
 
-    addSong(music).then(() => {
-      this.setState({ isLoadind: false });
-    });
+      removeSong(music).then(() => {
+        this.setState({ isLoadind: false });
+      });
+    }
   };
 
   render() {
