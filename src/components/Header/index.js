@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { getUser } from '../../services/userAPI';
+
 import Loading from '../Loading';
+
+import { getUser } from '../../services/userAPI';
+
+import * as S from './styles';
 
 export default class Header extends Component {
   state = {
@@ -27,37 +30,37 @@ export default class Header extends Component {
     const { userName, isLoading } = this.state;
 
     return (
-      <header data-testid="header-component">
+      <S.Container data-testid="header-component">
         {
           isLoading ? (
             <Loading />
           ) : (
-            <h2 data-testid="header-user-name">
-              { userName }
-            </h2>
+            <S.Title data-testid="header-user-name">
+              {`Olá ${userName}`}
+            </S.Title>
           )
         }
-        <nav>
-          <Link
+        <S.NavContainer>
+          <S.Navigation
             to="/search"
             data-testid="link-to-search"
           >
-            Pesquisar
-          </Link>
-          <Link
+            Pesquisar |
+          </S.Navigation>
+          <S.Navigation
             to="/favorites"
             data-testid="link-to-favorites"
           >
-            Favoritas
-          </Link>
-          <Link
+            Favoritas |
+          </S.Navigation>
+          <S.Navigation
             to="/profile"
             data-testid="link-to-profile"
           >
             Perfil
-          </Link>
-        </nav>
-      </header>
+          </S.Navigation>
+        </S.NavContainer>
+      </S.Container>
     );
   }
 }

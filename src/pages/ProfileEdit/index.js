@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import validator from 'validator';
 
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
 
 import { getUser, updateUser } from '../../services/userAPI';
+
+import * as S from './styles';
 
 export default class ProfileEdit extends Component {
   state = {
@@ -105,13 +106,13 @@ export default class ProfileEdit extends Component {
           isLoading ? (
             <Loading />
           ) : (
-            <form>
+            <S.Form>
               <img
                 src={ userImage }
                 alt={ userName }
                 data-testid="edit-input-image"
               />
-              <label htmlFor="input-edit-name">
+              <S.Label htmlFor="input-edit-name">
                 Nome
                 <input
                   data-testid="edit-input-name"
@@ -121,8 +122,8 @@ export default class ProfileEdit extends Component {
                   value={ userName }
                   onChange={ ({ target }) => this.handleInputChange(target) }
                 />
-              </label>
-              <label htmlFor="input-edit-name">
+              </S.Label>
+              <S.Label htmlFor="input-edit-name">
                 Email
                 <input
                   data-testid="edit-input-email"
@@ -132,8 +133,8 @@ export default class ProfileEdit extends Component {
                   value={ userEmail }
                   onChange={ ({ target }) => this.handleInputChange(target) }
                 />
-              </label>
-              <label htmlFor="input-edit-description">
+              </S.Label>
+              <S.Label htmlFor="input-edit-description">
                 Descrição
                 <textarea
                   data-testid="edit-input-description"
@@ -142,16 +143,16 @@ export default class ProfileEdit extends Component {
                   value={ userDescription }
                   onChange={ ({ target }) => this.handleInputChange(target) }
                 />
-              </label>
-              <button
+              </S.Label>
+              <S.Button
                 type="submit"
                 data-testid="edit-button-save"
                 onClick={ (event) => this.handleSubmit(event) }
                 disabled={ isSaveButtonDisabled }
               >
                 Salvar
-              </button>
-            </form>
+              </S.Button>
+            </S.Form>
           )
         }
       </>

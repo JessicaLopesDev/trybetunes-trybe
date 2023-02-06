@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
+
 import { getUser } from '../../services/userAPI';
+
+import * as S from './styles';
 
 export default class Profile extends Component {
   state = {
@@ -41,43 +43,44 @@ export default class Profile extends Component {
     } = this.state;
 
     return (
-      <>
-        <header data-testid="page-profile">
-          <Header />
-        </header>
+      <S.Container data-testid="page-profile">
+        <Header />
         {
           isLoading ? (
             <Loading />
           ) : (
-            <main>
-              <section>
-                <img
-                  src="url-to-image"
+            <S.ProfileContainer>
+              <S.ImgContainer>
+                <S.Image
+                  src="./images/default-user-icon.jpg"
                   alt={ userImage }
                   data-testid="profile-image"
                 />
-                <Link
+                <S.Navigation
                   to="/profile/edit"
                 >
                   Editar perfil
-                </Link>
-              </section>
-              <section>
-                <h3>Nome</h3>
-                <p>{ userName }</p>
-              </section>
-              <section>
-                <h3>Email</h3>
-                <p>{ userEmail }</p>
-              </section>
-              <section>
-                <h3>Descrição</h3>
-                <p>{ userDescription }</p>
-              </section>
-            </main>
+                </S.Navigation>
+              </S.ImgContainer>
+
+              <S.UserDataContainer>
+                <S.UserData>
+                  <S.Title>Nome</S.Title>
+                  <S.Text>{ userName }</S.Text>
+                </S.UserData>
+                <S.UserData>
+                  <S.Title>Email</S.Title>
+                  <S.Text>{ userEmail }</S.Text>
+                </S.UserData>
+                <S.UserData>
+                  <S.Title>Descrição</S.Title>
+                  <S.Text>{ userDescription }</S.Text>
+                </S.UserData>
+              </S.UserDataContainer>
+            </S.ProfileContainer>
           )
         }
-      </>
+      </S.Container>
     );
   }
 }
