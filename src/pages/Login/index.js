@@ -39,7 +39,7 @@ export default class Login extends Component {
     const isButtonDisable = name.length >= minCharacter;
 
     return (
-      <form data-testid="page-login">
+      <S.Form data-testid="page-login">
         <S.Label htmlFor="input-name">
           Nome
           <input
@@ -64,7 +64,7 @@ export default class Login extends Component {
         {
           isLoading && <Loading />
         }
-      </form>
+      </S.Form>
     );
   }
 }

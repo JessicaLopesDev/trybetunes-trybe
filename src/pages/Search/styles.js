@@ -4,7 +4,7 @@ export const Form = styled.form``;
 
 export const Title = styled.h2``;
 
-export const Label = styled.label``;
+export const Input = styled.input``;
 
 export const Button = styled.button`
   padding: 6px;
@@ -12,6 +12,7 @@ export const Button = styled.button`
   background-color: green;
   color: white;
   font-weight: bold;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', sans-serif;
 
   border: none;
   border-radius: 4px;

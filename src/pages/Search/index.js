@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+
 import AlbumCard from '../../components/AlbumCard';
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
+
 import searchAlbumsAPI from '../../services/searchAlbumsAPI';
+
+import * as S from './styles';
 
 export default class Search extends Component {
   state = {
@@ -57,35 +61,35 @@ export default class Search extends Component {
               <Loading />
             ) : (
               <>
-                <form data-testid="page-login">
-                  <input
+                <S.Form data-testid="page-login">
+                  <S.Input
                     data-testid="search-artist-input"
                     type="text"
                     value={ inputValue }
                     onChange={ ({ target }) => this.onInputChange(target.value) }
                   />
 
-                  <button
+                  <S.Button
                     data-testid="search-artist-button"
                     type="submit"
                     disabled={ !isButtonDisable }
                     onClick={ this.onSubmitForm }
                   >
                     Pesquisar
-                  </button>
-                </form>
+                  </S.Button>
+                </S.Form>
 
                 {
                   !!albums && (
                     !albums.length ? (
-                      <h2>
+                      <S.Title>
                         Nenhum álbum foi encontrado
-                      </h2>
+                      </S.Title>
                     ) : (
                       <>
-                        <h2>
+                        <S.Title>
                           {`Resultado de álbuns de: ${artistName}`}
-                        </h2>
+                        </S.Title>
                         {
                           albums.map((album) => (
                             <AlbumCard
