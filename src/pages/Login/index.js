@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import { createUser } from '../../services/userAPI';
+
 import Loading from '../../components/Loading';
+
+import * as S from './styles';
 
 export default class Login extends Component {
   state = {
@@ -36,7 +40,7 @@ export default class Login extends Component {
 
     return (
       <form data-testid="page-login">
-        <label htmlFor="input-name">
+        <S.Label htmlFor="input-name">
           Nome
           <input
             data-testid="login-name-input"
@@ -46,16 +50,16 @@ export default class Login extends Component {
             value={ name }
             onChange={ ({ target }) => this.handleInputNameChange(target.value) }
           />
-        </label>
+        </S.Label>
 
-        <button
+        <S.Button
           data-testid="login-submit-button"
           type="submit"
           disabled={ !isButtonDisable }
           onClick={ this.handleSubmitForm }
         >
           Entrar
-        </button>
+        </S.Button>
 
         {
           isLoading && <Loading />
