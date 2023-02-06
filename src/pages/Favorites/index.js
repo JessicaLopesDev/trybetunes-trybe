@@ -48,7 +48,7 @@ export default class Favorites extends Component {
           ) : (
             favoriteSongs.map((song) => (
               <MusicCard
-                key={ song.trackNumber }
+                key={ song.trackName }
                 musicName={ song.trackName }
                 url={ song.previewUrl }
                 musicId={ song.trackId }

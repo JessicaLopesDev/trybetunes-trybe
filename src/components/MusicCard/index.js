@@ -13,7 +13,7 @@ export default class MusicCard extends Component {
 
     return (
       <div>
-        <span>{musicName}</span>
+        <span>{ musicName }</span>
 
         <audio
           data-testid="audio-component"
@@ -45,7 +45,7 @@ export default class MusicCard extends Component {
 MusicCard.propTypes = {
   musicName: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  musicId: PropTypes.number.isRequired,
+  musicId: PropTypes.string.isRequired,
   isChecked: PropTypes.bool.isRequired,
   isFavorite: PropTypes.func.isRequired,
 };
