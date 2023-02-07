@@ -50,12 +50,10 @@ export default class Search extends Component {
     const isButtonDisable = inputValue.length >= minCharacter;
 
     return (
-      <>
-        <header data-testid="page-search">
-          <Header />
-        </header>
+      <S.Container data-testid="page-search">
+        <Header />
 
-        <main>
+        <S.SearchContainer>
           {
             isLoading ? (
               <Loading />
@@ -106,11 +104,10 @@ export default class Search extends Component {
                   )
                 }
               </>
-
             )
           }
-        </main>
-      </>
+        </S.SearchContainer>
+      </S.Container>
     );
   }
 }

@@ -45,13 +45,13 @@ export default class Header extends Component {
             to="/search"
             data-testid="link-to-search"
           >
-            Pesquisar |
+            Pesquisar
           </S.Navigation>
           <S.Navigation
             to="/favorites"
             data-testid="link-to-favorites"
           >
-            Favoritas |
+            Favoritas
           </S.Navigation>
           <S.Navigation
             to="/profile"

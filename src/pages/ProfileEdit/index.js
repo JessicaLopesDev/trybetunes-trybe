@@ -98,10 +98,8 @@ export default class ProfileEdit extends Component {
     } = this.state;
 
     return (
-      <>
-        <div data-testid="page-profile-edit">
-          <Header />
-        </div>
+      <S.Container data-testid="page-profile-edit">
+        <Header />
         {
           isLoading ? (
             <Loading />
@@ -155,11 +153,13 @@ export default class ProfileEdit extends Component {
             </S.Form>
           )
         }
-      </>
+      </S.Container>
     );
   }
 }
 
 ProfileEdit.propTypes = {
-  history: PropTypes.objectOf(PropTypes.string).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
 };

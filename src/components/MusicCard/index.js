@@ -45,7 +45,7 @@ export default class MusicCard extends Component {
 MusicCard.propTypes = {
   musicName: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  musicId: PropTypes.string.isRequired,
+  musicId: PropTypes.number.isRequired,
   isChecked: PropTypes.bool.isRequired,
   isFavorite: PropTypes.func.isRequired,
 };

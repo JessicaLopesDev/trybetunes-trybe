@@ -7,14 +7,13 @@ export const Container = styled.div`
   display: flex;
 `;
 
-export const SearchContainer = styled.main`
+export const AlbumContainer = styled.main`
   margin: auto;
   width: 50%;
-  margin-top: 150px;
   padding: 36px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: baseline;
   background-color: rgb(207, 208, 220);
   border-radius: 8px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
@@ -22,7 +21,14 @@ export const SearchContainer = styled.main`
 
 export const Form = styled.form``;
 
-export const Title = styled.h2``;
+export const Title = styled.h2`
+  font-size: 20px;
+  color: rgb(11, 40, 72);
+`;
+
+export const Text = styled.h4`
+  color: rgba(1, 22, 38, 0.5);
+`;
 
 export const Input = styled.input``;
 

@@ -8,6 +8,8 @@ import Loading from '../../components/Loading';
 import getMusics from '../../services/musicsAPI';
 import { addSong, getFavoriteSongs, removeSong } from '../../services/favoriteSongsAPI';
 
+import * as S from './styles';
+
 export default class Album extends Component {
   state = {
     musics: [],
@@ -76,22 +78,22 @@ export default class Album extends Component {
     const { musics, isLoading, trackIds } = this.state;
 
     return (
-      <div data-testid="page-album">
+      <S.Container data-testid="page-album">
         <Header />
         {
           isLoading ? (
             <Loading />
           ) : (
             !!musics.length && (
-              <>
-                <h2 data-testid="artist-name">{ musics[0].artistName }</h2>
-                <h4 data-testid="album-name">{ musics[0].collectionName }</h4>
+              <S.AlbumContainer>
+                <S.Title data-testid="artist-name">{ musics[0].artistName }</S.Title>
+                <S.Text data-testid="album-name">{ musics[0].collectionName }</S.Text>
                 {
                   musics.map((music, index) => {
                     if (index > 0) {
                       return (
                         <MusicCard
-                          key={ music.trackName }
+                          key={ `${music.trackName}${music.trackId}` }
                           musicName={ music.trackName }
                           url={ music.previewUrl }
                           musicId={ music.trackId }
@@ -107,11 +109,11 @@ export default class Album extends Component {
                     return null;
                   })
                 }
-              </>
+              </S.AlbumContainer>
             )
           )
         }
-      </div>
+      </S.Container>
     );
   }
 }

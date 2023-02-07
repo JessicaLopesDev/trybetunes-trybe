@@ -4,19 +4,19 @@ import { Link } from 'react-router-dom';
 export const Container = styled.div`
   margin: auto;
   height: 100vh;
-  background-color: rgb(207, 216, 226);
-  
+  background-color: rgb(232, 236, 241);
+  display: flex;
 `;
 
 export const ProfileContainer = styled.main`
-  margin: auto  ;
+  margin: auto;
   width: 50%;
   margin-top: 150px;
   padding: 36px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(210, 220, 232);
+  background-color: rgb(207, 208, 220);
   border-radius: 8px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
 `;

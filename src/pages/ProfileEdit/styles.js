@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  margin: auto;
+  height: 100vh;
+  background-color: rgb(232, 236, 241);
+  display: flex;
+`;
+
 export const Form = styled.form``;
 
 export const Title = styled.h2``;

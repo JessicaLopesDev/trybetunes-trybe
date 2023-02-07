@@ -39,18 +39,15 @@ export default class Login extends Component {
     const isButtonDisable = name.length >= minCharacter;
 
     return (
-      <S.Form data-testid="page-login">
-        <S.Label htmlFor="input-name">
-          Nome
-          <input
-            data-testid="login-name-input"
-            id="input-name"
-            type="text"
-            name="name"
-            value={ name }
-            onChange={ ({ target }) => this.handleInputNameChange(target.value) }
-          />
-        </S.Label>
+      <S.Container data-testid="page-login">
+        <S.Input
+          data-testid="login-name-input"
+          type="text"
+          name="name"
+          placeholder="Digite seu nome aqui"
+          value={ name }
+          onChange={ ({ target }) => this.handleInputNameChange(target.value) }
+        />
 
         <S.Button
           data-testid="login-submit-button"
@@ -64,7 +61,7 @@ export default class Login extends Component {
         {
           isLoading && <Loading />
         }
-      </S.Form>
+      </S.Container>
     );
   }
 }
