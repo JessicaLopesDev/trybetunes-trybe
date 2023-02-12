@@ -40,11 +40,13 @@ export default class ProfileEdit extends Component {
     const {
       userName,
       userEmail,
+      userImage,
       userDescription,
     } = this.state;
 
     if (userName.length
       && userEmail.length
+      && userImage.length
       && userDescription.length
       && validator.isEmail(userEmail)
     ) {
@@ -70,15 +72,15 @@ export default class ProfileEdit extends Component {
     const {
       userName,
       userEmail,
-      userImage,
       userDescription,
+      userImage,
     } = this.state;
 
     const userData = {
       name: userName,
       email: userEmail,
-      image: userImage,
       description: userDescription,
+      image: userImage,
     };
 
     updateUser(userData).then(() => {
@@ -104,11 +106,19 @@ export default class ProfileEdit extends Component {
           isLoading ? (
             <Loading />
           ) : (
-            <S.Form>
-              <img
+            <S.Form
+              onSubmit={ (event) => this.handleSubmit(event) }
+            >
+              <S.ImgInput
+                type="text"
+                data-testid="edit-input-image"
+                name="userImage"
+                value={ userImage }
+                onChange={ ({ target }) => this.handleInputChange(target) }
+              />
+              <S.UserImage
                 src={ userImage }
                 alt={ userName }
-                data-testid="edit-input-image"
               />
               <S.Label htmlFor="input-edit-name">
                 Nome
@@ -121,11 +131,11 @@ export default class ProfileEdit extends Component {
                   onChange={ ({ target }) => this.handleInputChange(target) }
                 />
               </S.Label>
-              <S.Label htmlFor="input-edit-name">
+              <S.Label htmlFor="input-edit-email">
                 Email
                 <input
                   data-testid="edit-input-email"
-                  id="input-edit-name"
+                  id="input-edit-email"
                   type="text"
                   name="userEmail"
                   value={ userEmail }
@@ -136,7 +146,7 @@ export default class ProfileEdit extends Component {
                 Descrição
                 <textarea
                   data-testid="edit-input-description"
-                  id="input-edit-name"
+                  id="input-edit-description"
                   name="userDescription"
                   value={ userDescription }
                   onChange={ ({ target }) => this.handleInputChange(target) }
@@ -145,7 +155,6 @@ export default class ProfileEdit extends Component {
               <S.Button
                 type="submit"
                 data-testid="edit-button-save"
-                onClick={ (event) => this.handleSubmit(event) }
                 disabled={ isSaveButtonDisabled }
               >
                 Salvar

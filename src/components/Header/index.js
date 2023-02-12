@@ -59,6 +59,11 @@ export default class Header extends Component {
           >
             Perfil
           </S.Navigation>
+          <S.Navigation
+            to="/profile/edit"
+          >
+            Editar perfil
+          </S.Navigation>
         </S.NavContainer>
       </S.Container>
     );

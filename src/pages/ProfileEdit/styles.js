@@ -7,9 +7,20 @@ export const Container = styled.div`
   display: flex;
 `;
 
-export const Form = styled.form``;
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`;
 
-export const Title = styled.h2``;
+export const UserImage = styled.img`
+  width: 16vh;
+  border-radius: 6px;
+`;
+
+export const ImgInput = styled.input`
+  /* display: none; */
+`;
 
 export const Label = styled.label``;
 

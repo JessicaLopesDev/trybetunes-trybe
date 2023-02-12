@@ -52,15 +52,10 @@ export default class Profile extends Component {
             <S.ProfileContainer>
               <S.ImgContainer>
                 <S.Image
-                  src="./images/default-user-icon.jpg"
-                  alt={ userImage }
+                  src={ userImage }
+                  alt={ userName }
                   data-testid="profile-image"
                 />
-                <S.Navigation
-                  to="/profile/edit"
-                >
-                  Editar perfil
-                </S.Navigation>
               </S.ImgContainer>
 
               <S.UserDataContainer>
@@ -80,6 +75,7 @@ export default class Profile extends Component {
             </S.ProfileContainer>
           )
         }
+        <p id="hide-name">{ userName }</p>
       </S.Container>
     );
   }

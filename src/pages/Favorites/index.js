@@ -5,6 +5,8 @@ import MusicCard from '../../components/MusicCard';
 
 import { getFavoriteSongs, removeSong } from '../../services/favoriteSongsAPI';
 
+import * as S from './styles';
+
 export default class Favorites extends Component {
   state = {
     isLoading: false,
@@ -40,25 +42,29 @@ export default class Favorites extends Component {
     const { isLoading, favoriteSongs } = this.state;
 
     return (
-      <div data-testid="page-favorites">
+      <S.Container data-testid="page-favorites">
         <Header />
         {
           isLoading ? (
             <Loading />
           ) : (
-            favoriteSongs.map((song) => (
-              <MusicCard
-                key={ song.trackName }
-                musicName={ song.trackName }
-                url={ song.previewUrl }
-                musicId={ song.trackId }
-                isChecked
-                isFavorite={ () => this.handleRemoveFavoriteSong(song) }
-              />
-            ))
+            <S.FavoriteContainer>
+              {
+                favoriteSongs.map((song) => (
+                  <MusicCard
+                    key={ `${song.trackName}${song.trackId}` }
+                    musicName={ song.trackName }
+                    url={ song.previewUrl }
+                    musicId={ JSON.stringify(song.trackId) }
+                    isChecked
+                    isFavorite={ () => this.handleRemoveFavoriteSong(song) }
+                  />
+                ))
+              }
+            </S.FavoriteContainer>
           )
         }
-      </div>
+      </S.Container>
     );
   }
 }

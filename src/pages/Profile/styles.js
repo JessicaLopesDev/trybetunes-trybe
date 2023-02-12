@@ -6,6 +6,9 @@ export const Container = styled.div`
   height: 100vh;
   background-color: rgb(232, 236, 241);
   display: flex;
+  #hide-name {
+    color: rgb(232, 236, 241)
+  }
 `;
 
 export const ProfileContainer = styled.main`
@@ -29,8 +32,8 @@ export const ImgContainer = styled.section`
 `;
 
 export const Image = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 10vh;
+  border-radius: 6px;
 `;
 
 export const UserDataContainer = styled.section`

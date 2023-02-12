@@ -76,7 +76,6 @@ export default class Album extends Component {
 
   render() {
     const { musics, isLoading, trackIds } = this.state;
-
     return (
       <S.Container data-testid="page-album">
         <Header />
@@ -96,7 +95,7 @@ export default class Album extends Component {
                           key={ `${music.trackName}${music.trackId}` }
                           musicName={ music.trackName }
                           url={ music.previewUrl }
-                          musicId={ music.trackId }
+                          musicId={ JSON.stringify(music.trackId) }
                           isChecked={
                             trackIds.includes(music.trackId)
                           }
